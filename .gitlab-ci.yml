@@ -14,7 +14,7 @@ build-ci-docker:
 
   script:
     - docker build -t ${IMG_NAME}_ci:ci-${CI_COMMIT_REF_NAME} -f Dockerfile ${SDK_NGULTRA_DIR}
-    - docker run --rm -t ${IMG_NAME}_ci:ci-${CI_COMMIT_REF_NAME} bash -c 'arm-none-eabi-gcc'
+    - docker run --rm -t ${IMG_NAME}_ci:ci-${CI_COMMIT_REF_NAME} bash -c 'arm-none-eabi-gcc --version'
 
 build-deploy:
   stage: deploy
