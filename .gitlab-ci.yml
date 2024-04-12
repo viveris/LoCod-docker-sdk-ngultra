@@ -10,8 +10,7 @@ variables:
 
 build-ci-docker:
   stage: ci
-  tags:
-    - docker-build
+  tags: [docker-build, VM]
 
   script:
     - docker build -t ${IMG_NAME}_ci:ci-${CI_COMMIT_REF_NAME} -f Dockerfile ${SDK_NGULTRA_DIR}
@@ -19,8 +18,8 @@ build-ci-docker:
 
 build-deploy:
   stage: deploy
-  tags:
-    - docker-build
+  tags: [docker-build, VM]
+  
   only:
     - tags
 
@@ -32,8 +31,7 @@ build-deploy:
 
 remove-tmp-img:
   stage: rm
-  tags:
-    - docker-build
+  tags: [docker-build, VM]
 
   script:
     - docker image rm ${IMG_NAME}_ci:ci-${CI_COMMIT_REF_NAME}
